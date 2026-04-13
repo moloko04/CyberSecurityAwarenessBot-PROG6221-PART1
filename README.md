@@ -41,7 +41,7 @@ Learning Outcomes
 - Input validation and graceful error handling
 
 Workflow Screenshot
-![Workflow](Screenshot(10).png)
+![Workflow](cybersecurityAwarenessBot-PROG-PART1\Screenshot(10).png)
 
 
 Author:Moloko Mothemela 
