@@ -181,3 +181,41 @@ namespace CybersecurityAwarenessBot
             }
         }
 
+        private void ShowResponse(string topic, string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine($"\n {topic}");
+            Console.ResetColor();
+
+            string[] sentences = message.Split('.');
+            foreach (string sentence in sentences)
+            {
+                if (!string.IsNullOrWhiteSpace(sentence))
+                {
+                    Console.WriteLine(sentence.Trim() + ".");
+                    Thread.Sleep(700);
+                }
+            }
+        }
+
+        private void SimpleQuiz()
+        {
+            Console.WriteLine("\n Quick Cybersecurity Quiz:");
+            Console.WriteLine("Is it safe to click on a link that says 'Urgent: Your bank account is locked'? (yes/no)");
+
+            string answer = Console.ReadLine()?.ToLower().Trim();
+
+            if (answer == "no")
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Correct! Never click urgent links, it's likely phishing.");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Wrong! Always be cautious with urgent requests.");
+            }
+            Console.ResetColor();
+        }
+    }
+}
