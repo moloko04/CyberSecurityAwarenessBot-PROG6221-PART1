@@ -80,7 +80,34 @@ namespace CybersecurityAwarenessBot
             }
         }
 
-        
+        private void GreetUser()
+        {
+            Thread.Sleep(800);
 
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Hello! Welcome to the Cybersecurity Awareness Bot.");
+            Thread.Sleep(600);
+            Console.WriteLine("I’m your friendly guide here to help you stay safe online.");
+            Thread.Sleep(600);
+            Console.WriteLine("With so many scams and dodgy links going around, it’s great that you’re here.");
+            Thread.Sleep(700);
+            Console.WriteLine("what would you like to know about today?\n");
+            Console.ResetColor();
 
+            Console.Write("What is your name? ");
+            string nameInput = Console.ReadLine()?.Trim();
+
+            if (string.IsNullOrEmpty(nameInput) || nameInput.Length < 2)
+            {
+                currentUser.Name = "Friend";
+                Console.WriteLine("Name not provided properly. I'll call you Friend!");
+            }
+            else
+            {
+                currentUser.Name = nameInput;
+                Console.WriteLine($"\nNice to meet you, {currentUser.Name}! Ready to learn how to stay safe online.");
+            }
+
+            Console.WriteLine("==================================================\n");
+        }
 
