@@ -111,3 +111,73 @@ namespace CybersecurityAwarenessBot
             Console.WriteLine("==================================================\n");
         }
 
+        private void RunChatbot()
+        {
+            bool running = true;
+
+            while (running)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("\nWhat would you like to know about today? Choose an option:");
+                Console.WriteLine("1. Phishing Scams");
+                Console.WriteLine("2. Strong Passwords");
+                Console.WriteLine("3. Suspicious Links");
+                Console.WriteLine("4. Quick Quiz");
+                Console.WriteLine("5. Exit");
+                Console.ResetColor();
+
+                Console.Write("\nEnter your choice (1-5): ");
+                string input = Console.ReadLine()?.Trim();
+
+                if (string.IsNullOrEmpty(input))
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("I didn’t quite understand that. Please enter a number between 1 and 5.");
+                    Console.ResetColor();
+                    continue;
+                }
+
+                if (!int.TryParse(input, out int choice) || choice < 1 || choice > 5)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid choice. Please enter a number between 1 and 5.");
+                    Console.ResetColor();
+                    continue;
+                }
+
+                Thread.Sleep(800);
+
+                switch (choice)
+                {
+                    case 1:
+                        ShowResponse("Phishing Scams", "Never click links in emails or SMS that create urgency. Always check the sender and hover over the link before clicking. Report suspicious messages to 0800 171 100.");
+                        break;
+
+                    case 2:
+                        ShowResponse("Strong Passwords", "Use passwords with at least 12 characters, mixing upper and lower case, numbers and symbols. Enable two-factor authentication (2FA) wherever possible!");
+                        break;
+
+                    case 3:
+                        ShowResponse("Suspicious Links", "If a link looks strange or promises something too good to be true, it’s probably a scam. Type the website address manually instead of clicking.");
+                        break;
+
+                    case 4:
+                        SimpleQuiz();
+                        break;
+
+                    case 5:
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine($"\nThank you, {currentUser.Name}! Stay safe online and remember: Think before you click!");
+                        Console.ResetColor();
+                        running = false;
+                        break;
+                }
+
+                if (running)
+                {
+                    Thread.Sleep(600);
+                    Console.WriteLine("\n" + new string('-', 60));
+                }
+            }
+        }
+
